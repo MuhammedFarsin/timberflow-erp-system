@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useBusiness, useSession } from "@/lib/data";
+import logo from "@/assets/Images/logo.png";
 
 const NAV = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -62,7 +63,7 @@ function Brand({ name }: { name: string }) {
   return (
     <div className="flex items-center gap-2.5 px-5 py-5">
       <div className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-        <TreePine className="size-4" strokeWidth={2} />
+        <img src={logo} alt="Logo" className="h-12 w-12" />
       </div>
       <div className="min-w-0">
         <p className="truncate text-sm font-semibold leading-tight">{name}</p>

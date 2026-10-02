@@ -15,9 +15,15 @@ export const Route = createFileRoute("/_authenticated/settings")({
   head: () => ({
     meta: [
       { title: "Settings — Timber ERP" },
-      { name: "description", content: "Business profile, GST, invoice and timber calculation settings." },
+      {
+        name: "description",
+        content: "Business profile, GST, invoice and timber calculation settings.",
+      },
       { property: "og:title", content: "Settings — Timber ERP" },
-      { property: "og:description", content: "Configure grades, rates, CFT formula and invoice numbering." },
+      {
+        property: "og:description",
+        content: "Configure grades, rates, CFT formula and invoice numbering.",
+      },
     ],
   }),
   component: SettingsPage,
@@ -75,8 +81,16 @@ function SettingsPage() {
     setSaving(true);
     try {
       const numeric = [
-        "gst_rate", "cft_divisor", "cft_rounding", "grade1_min", "grade2_min",
-        "grade1_rate", "grade2_rate", "grade3_rate", "default_allowance", "low_stock_cft",
+        "gst_rate",
+        "cft_divisor",
+        "cft_rounding",
+        "grade1_min",
+        "grade2_min",
+        "grade1_rate",
+        "grade2_rate",
+        "grade3_rate",
+        "default_allowance",
+        "low_stock_cft",
       ];
       const payload: Record<string, unknown> = {};
       Object.entries(form).forEach(([k, v]) => {
@@ -144,8 +158,20 @@ function SettingsPage() {
 
         <TabsContent value="invoice">
           <div className="card-surface grid gap-5 p-6 sm:grid-cols-2">
-            <Field label="Invoice prefix" name="invoice_prefix" form={form} set={set} hint="Numbers become PREFIX/FY/0001" />
-            <Field label="Default GST rate (%)" name="gst_rate" form={form} set={set} type="number" />
+            <Field
+              label="Invoice prefix"
+              name="invoice_prefix"
+              form={form}
+              set={set}
+              hint="Numbers become PREFIX/FY/0001"
+            />
+            <Field
+              label="Default GST rate (%)"
+              name="gst_rate"
+              form={form}
+              set={set}
+              type="number"
+            />
             <Field label="Bank name" name="bank_name" form={form} set={set} />
             <Field label="Account number" name="bank_account" form={form} set={set} />
             <Field label="IFSC" name="bank_ifsc" form={form} set={set} />
@@ -172,14 +198,62 @@ function SettingsPage() {
               type="number"
               hint="CFT = (Effective Girth² × Length) / divisor"
             />
-            <Field label="CFT decimal places" name="cft_rounding" form={form} set={set} type="number" />
-            <Field label="Default allowance (in)" name="default_allowance" form={form} set={set} type="number" />
-            <Field label="Low stock threshold (CFT)" name="low_stock_cft" form={form} set={set} type="number" />
-            <Field label="Grade 1 minimum girth (in)" name="grade1_min" form={form} set={set} type="number" />
-            <Field label="Grade 2 minimum girth (in)" name="grade2_min" form={form} set={set} type="number" />
-            <Field label="Grade 1 rate (₹/CFT)" name="grade1_rate" form={form} set={set} type="number" />
-            <Field label="Grade 2 rate (₹/CFT)" name="grade2_rate" form={form} set={set} type="number" />
-            <Field label="Grade 3 rate (₹/CFT)" name="grade3_rate" form={form} set={set} type="number" />
+            <Field
+              label="CFT decimal places"
+              name="cft_rounding"
+              form={form}
+              set={set}
+              type="number"
+            />
+            <Field
+              label="Default allowance (in)"
+              name="default_allowance"
+              form={form}
+              set={set}
+              type="number"
+            />
+            <Field
+              label="Low stock threshold (CFT)"
+              name="low_stock_cft"
+              form={form}
+              set={set}
+              type="number"
+            />
+            <Field
+              label="Grade 1 minimum girth (in)"
+              name="grade1_min"
+              form={form}
+              set={set}
+              type="number"
+            />
+            <Field
+              label="Grade 2 minimum girth (in)"
+              name="grade2_min"
+              form={form}
+              set={set}
+              type="number"
+            />
+            <Field
+              label="Grade 1 rate (₹/CFT)"
+              name="grade1_rate"
+              form={form}
+              set={set}
+              type="number"
+            />
+            <Field
+              label="Grade 2 rate (₹/CFT)"
+              name="grade2_rate"
+              form={form}
+              set={set}
+              type="number"
+            />
+            <Field
+              label="Grade 3 rate (₹/CFT)"
+              name="grade3_rate"
+              form={form}
+              set={set}
+              type="number"
+            />
           </div>
         </TabsContent>
 
@@ -395,4 +469,3 @@ async function exportBackup(business: { id: string; name: string; gstin: string 
     toast.error(errMessage(e));
   }
 }
-
